@@ -5,4 +5,7 @@ export default {
     },
     moduleFileExtensions: ["js", "jsx", "json", "node"],
     setupFilesAfterEnv: ["./src/components/BarChart.test.jsx"],
+    collectCoverage: true,
+    coverageDirectory: "coverage",
+    coverageReporters: ["json", "lcov"],
 };
