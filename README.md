@@ -7,3 +7,8 @@
 
   https://sonarcloud.io/project/overview?id=puneetuttam_ExploreRates
 
+### Snapshot
+
+![image](https://github.com/user-attachments/assets/cef1a31c-8359-4f9e-ba94-4a3650f74b00)
+
+
