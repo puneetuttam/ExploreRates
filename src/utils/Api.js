@@ -14,6 +14,6 @@ export function Api(
         .then((res) => res.json())
         .catch((err) => {
             console.error(err);
-            return null; // Handle errors by returning null or fallback data
+            return null; 
         });
 }

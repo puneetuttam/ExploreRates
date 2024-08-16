@@ -27,8 +27,8 @@ jobs:
       run: npm install
 
     # Step 4: Run tests 
-    # - name: Run tests
-    #   run: npm test
+    - name: Run tests
+      run: npm test
 
     # Step 5: Run SonarCloud scan
     - name: Run SonarCloud Scan
