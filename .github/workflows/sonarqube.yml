@@ -1,0 +1,44 @@
+name: SonarCloud Scan and Tests
+
+# Trigger the workflow on push to the main branch
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Run SonarCloud and Tests
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout the code from the repository
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    # Step 2: Set up Node.js environment
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16' # Adjust the Node version based on your project
+
+    # Step 3: Install project dependencies
+    - name: Install dependencies
+      run: npm install
+
+    # Step 4: Run tests 
+    - name: Run tests
+      run: npm test
+
+    # Step 5: Run SonarCloud scan
+    - name: Run SonarCloud Scan
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} # Access the secret token
+        SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }} # Access the secret project key
+        SONAR_ORG_KEY: ${{ secrets.SONAR_ORG_KEY }} # Access the secret organization key
+      run: |
+        npx sonarqube-scanner \
+        -Dsonar.organization=${{ secrets.SONAR_ORG_KEY }} \
+        -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }} \
+        -Dsonar.sources=src \
+        -Dsonar.login=${{ secrets.SONAR_TOKEN }}
